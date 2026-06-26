@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça o projeto Conecta Hortas, alinhado ao ODS 2 da ONU – Fome Zero e Agricultura Sustentável." />
+  <title>Conecta Hortas – Sobre o Projeto</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="sobre">
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo" aria-label="Conecta Hortas – início">
+      <svg class="logo-svg" viewBox="0 0 148 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="22" r="11" fill="var(--green-dark)"/>
+        <ellipse cx="18" cy="13" rx="5" ry="6" fill="var(--green-mid)"/>
+        <line x1="18" y1="13" x2="18" y2="7" stroke="var(--green-dark)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="18" y1="9" x2="22" y2="6" stroke="var(--green-dark)" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="36" y="25" font-family="Fraunces,serif" font-weight="700" font-size="16" fill="var(--green-dark)">Conecta</text>
+        <text x="36" y="38" font-family="Fraunces,serif" font-weight="300" font-size="14" fill="var(--green-mid)">Hortas</text>
+      </svg>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="menubar">
+      <li role="none"><a href="index.html" class="nav-link" data-page="index" role="menuitem">Início</a></li>
+      <li role="none"><a href="hortas.html" class="nav-link" data-page="hortas" role="menuitem">Hortas</a></li>
+      <li role="none"><a href="voluntariado.html" class="nav-link" data-page="voluntariado" role="menuitem">Voluntariado</a></li>
+      <li role="none"><a href="sobre.html" class="nav-link" data-page="sobre" role="menuitem">Sobre</a></li>
+      <li role="none"><a href="contato.html" class="nav-link" data-page="contato" role="menuitem">Contato</a></li>
+      <li role="none">
+        <a href="https://youtube.com/@vitoralmeida-f9g?si=i5HQCI3WOza-9qX6"
+           target="_blank" rel="noopener" class="nav-cta" role="menuitem">
+          <i data-lucide="play-circle" aria-hidden="true"></i> Pitch
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     SOBRE
+══════════════════════════════════════ -->
+<section id="sobre" class="section sobre-section page-section-top" aria-labelledby="sobre-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">📋 O Projeto</span>
+      <h2 id="sobre-title">Sobre o <em>Conecta Hortas</em></h2>
+      <p>Um projeto acadêmico da FIAP com impacto real na vida de milhares de pessoas em São Paulo.</p>
+    </div>
+
+    <!-- ODS Banner -->
+    <div class="ods-banner" role="complementary" aria-label="ODS 2 – Fome Zero">
+      <div class="ods-icon" aria-hidden="true">
+        <svg viewBox="0 0 90 90" fill="none">
+          <rect width="90" height="90" rx="10" fill="#DDA63A"/>
+          <text x="45" y="28" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="sans-serif">ODS</text>
+          <text x="45" y="60" text-anchor="middle" font-size="36" font-weight="900" fill="white" font-family="sans-serif">2</text>
+          <text x="45" y="78" text-anchor="middle" font-size="7.5" fill="white" font-family="sans-serif">FOME ZERO</text>
+        </svg>
+      </div>
+      <div class="ods-text">
+        <h3>ODS 2 – Fome Zero e Agricultura Sustentável</h3>
+        <p>O Objetivo de Desenvolvimento Sustentável nº 2 da ONU visa acabar com a fome, alcançar a segurança alimentar, melhorar a nutrição e promover a agricultura sustentável até 2030. O Conecta Hortas é nossa resposta local a esse desafio global, transformando periferias em centros de produção e esperança.</p>
+        <div class="ods-chips" aria-label="Metas do ODS 2 abordadas">
+          <span>Meta 2.1 – Acesso universal a alimentos</span>
+          <span>Meta 2.3 – Renda de pequenos produtores</span>
+          <span>Meta 2.4 – Sistemas alimentares sustentáveis</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Objetivos -->
+    <div class="sobre-grid" role="list">
+      <div class="sobre-card" role="listitem">
+        <div class="sc-number" aria-hidden="true">01</div>
+        <h4>Reduzir a Insegurança Alimentar</h4>
+        <p>Conectar espaços urbanos subutilizados a comunidades vulneráveis para garantir acesso a alimentos frescos e nutritivos, sem custo.</p>
+      </div>
+      <div class="sobre-card" role="listitem">
+        <div class="sc-number" aria-hidden="true">02</div>
+        <h4>Agricultura Urbana Sustentável</h4>
+        <p>Adotar técnicas agroecológicas que regeneram o solo, poupam água e eliminam agrotóxicos, respeitando o ecossistema urbano.</p>
+      </div>
+      <div class="sobre-card" role="listitem">
+        <div class="sc-number" aria-hidden="true">03</div>
+        <h4>Educação e Tecnologia</h4>
+        <p>Usar tecnologia IoT para monitorar hortas e promover educação ambiental em escolas e centros comunitários de forma prática.</p>
+      </div>
+      <div class="sobre-card" role="listitem">
+        <div class="sc-number" aria-hidden="true">04</div>
+        <h4>Geração de Renda</h4>
+        <p>Transformar excedentes de produção em renda extra para famílias participantes por meio de feiras e venda direta ao consumidor.</p>
+      </div>
+    </div>
+
+    <!-- Projeto info -->
+    <div class="projeto-info" role="list">
+      <div class="pi-box" role="listitem">
+        <div class="pi-icon"><i data-lucide="graduation-cap" aria-hidden="true"></i></div>
+        <div>
+          <strong>FIAP – PBL Agrotech</strong>
+          <span>Aprendizagem Baseada em Problemas – Fase 4</span>
+        </div>
+      </div>
+      <div class="pi-box" role="listitem">
+        <div class="pi-icon"><i data-lucide="target" aria-hidden="true"></i></div>
+        <div>
+          <strong>Protótipo Funcional</strong>
+          <span>Plataforma digital de gestão de hortas urbanas</span>
+        </div>
+      </div>
+      <div class="pi-box" role="listitem">
+        <div class="pi-icon"><i data-lucide="globe" aria-hidden="true"></i></div>
+        <div>
+          <strong>Impacto Local → Global</strong>
+          <span>Modelo replicável para outras cidades brasileiras</span>
+        </div>
+      </div>
+      <div class="pi-box" role="listitem">
+        <div class="pi-icon"><i data-lucide="award" aria-hidden="true"></i></div>
+        <div>
+          <strong>Alinhado à Agenda 2030</strong>
+          <span>ODS 2, 11, 13 e 15 da ONU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <svg class="logo-svg footer-logo" viewBox="0 0 148 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Conecta Hortas">
+            <circle cx="18" cy="22" r="11" fill="var(--sage)"/>
+            <ellipse cx="18" cy="13" rx="5" ry="6" fill="#a5d6a7"/>
+            <line x1="18" y1="13" x2="18" y2="7" stroke="var(--sage)" stroke-width="2" stroke-linecap="round"/>
+            <text x="36" y="25" font-family="Fraunces,serif" font-weight="700" font-size="16" fill="white">Conecta</text>
+            <text x="36" y="38" font-family="Fraunces,serif" font-weight="300" font-size="14" fill="var(--sage)">Hortas</text>
+          </svg>
+          <p>Transformando espaços urbanos em fontes de vida, alimento e comunidade sustentável.</p>
+          <div class="footer-ods">
+            <span>Alinhado ao</span>
+            <strong>ODS 2 – Fome Zero</strong>
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Links de navegação">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="hortas.html">Hortas</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-links" aria-label="Links do projeto">
+          <h5>Projeto</h5>
+          <ul>
+            <li><a href="https://youtube.com/@vitoralmeida-f9g?si=i5HQCI3WOza-9qX6" target="_blank" rel="noopener">▶ Pitch Vídeo</a></li>
+            <li><a href="sobre.html">ODS 2</a></li>
+            <li><a href="voluntariado.html">Seja Voluntário</a></li>
+            <li><a href="contato.html">Parcerias</a></li>
+            <li><a href="mailto:vitor.almeidadms05@gmail.com">E-mail</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-fiap">
+          <h5>Desenvolvido em</h5>
+          <div class="fiap-badge">
+            <span class="fiap-logo" aria-label="FIAP">FIAP</span>
+            <div>
+              <strong>PBL Agrotech</strong>
+              <span>Fase 4 · 2025</span>
+            </div>
+          </div>
+          <p class="footer-contact-mini">
+            <a href="mailto:vitor.almeidadms05@gmail.com">
+              <i data-lucide="mail" aria-hidden="true"></i>
+              vitor.almeidadms05@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© 2025 Conecta Hortas · FIAP PBL Agrotech</span>
+      <span>Feito com 🌿 por estudantes apaixonados por impacto social</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Voltar ao topo da página">
+  <i data-lucide="arrow-up" aria-hidden="true"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

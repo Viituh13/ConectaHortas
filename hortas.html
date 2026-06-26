@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça as hortas comunitárias do projeto Conecta Hortas em um mapa interativo." />
+  <title>Conecta Hortas – Nossas Hortas</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet CSS (usado apenas nesta página) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+
+  <!-- Leaflet JS (usado apenas nesta página) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="hortas">
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo" aria-label="Conecta Hortas – início">
+      <svg class="logo-svg" viewBox="0 0 148 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="22" r="11" fill="var(--green-dark)"/>
+        <ellipse cx="18" cy="13" rx="5" ry="6" fill="var(--green-mid)"/>
+        <line x1="18" y1="13" x2="18" y2="7" stroke="var(--green-dark)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="18" y1="9" x2="22" y2="6" stroke="var(--green-dark)" stroke-width="1.5" stroke-linecap="round"/>
+        <text x="36" y="25" font-family="Fraunces,serif" font-weight="700" font-size="16" fill="var(--green-dark)">Conecta</text>
+        <text x="36" y="38" font-family="Fraunces,serif" font-weight="300" font-size="14" fill="var(--green-mid)">Hortas</text>
+      </svg>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="menubar">
+      <li role="none"><a href="index.html" class="nav-link" data-page="index" role="menuitem">Início</a></li>
+      <li role="none"><a href="hortas.html" class="nav-link" data-page="hortas" role="menuitem">Hortas</a></li>
+      <li role="none"><a href="voluntariado.html" class="nav-link" data-page="voluntariado" role="menuitem">Voluntariado</a></li>
+      <li role="none"><a href="sobre.html" class="nav-link" data-page="sobre" role="menuitem">Sobre</a></li>
+      <li role="none"><a href="contato.html" class="nav-link" data-page="contato" role="menuitem">Contato</a></li>
+      <li role="none">
+        <a href="https://youtube.com/@vitoralmeida-f9g?si=i5HQCI3WOza-9qX6"
+           target="_blank" rel="noopener" class="nav-cta" role="menuitem">
+          <i data-lucide="play-circle" aria-hidden="true"></i> Pitch
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     HORTAS (Mapa + Busca + Cards)
+══════════════════════════════════════ -->
+<section id="hortas" class="section hortas-section page-section-top" aria-labelledby="hortas-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">🗺 Mapa Verde</span>
+      <h2 id="hortas-title">Nossas Hortas <em>Comunitárias</em></h2>
+      <p>Encontre a horta mais próxima, conheça o que cultivamos e faça parte dessa rede viva.</p>
+    </div>
+
+    <!-- Map controls -->
+    <div class="map-controls">
+      <button class="map-filter-btn active" data-filter="all">Todas as hortas</button>
+      <button class="map-filter-btn" data-filter="open">Com vagas abertas</button>
+      <button class="map-filter-btn" data-filter="full">Lotadas</button>
+    </div>
+
+    <!-- Leaflet Map -->
+    <div class="map-wrapper" role="region" aria-label="Mapa interativo das hortas comunitárias">
+      <div id="hortas-map"></div>
+      <div class="map-legend" aria-label="Legenda do mapa">
+        <div class="legend-item"><span class="legend-dot legend-open"></span> Com vagas</div>
+        <div class="legend-item"><span class="legend-dot legend-full"></span> Lotada</div>
+        <div class="legend-item"><span class="legend-dot legend-new"></span> Nova</div>
+      </div>
+    </div>
+
+    <!-- Horta detail popup (shown when pin clicked) -->
+    <div class="horta-detail-panel" id="hortaDetailPanel" hidden role="dialog" aria-labelledby="detail-title" aria-modal="false">
+      <button class="detail-close" id="detailClose" aria-label="Fechar detalhes">
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+      <div id="detail-content"></div>
+    </div>
+
+    <!-- 🔍 BUSCA DE HORTAS — nova funcionalidade obrigatória -->
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <i data-lucide="search" aria-hidden="true"></i>
+        <input
+          type="text"
+          id="hortaSearch"
+          placeholder="Pesquisar horta por nome, bairro ou cultivo... (ex: alface)"
+          aria-label="Pesquisar hortas"
+          autocomplete="off"
+        />
+        <button id="clearSearch" class="clear-search-btn" aria-label="Limpar busca" hidden>
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+      <span class="search-results-count" id="searchResultsCount" aria-live="polite"></span>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="hortas-grid" id="hortasGrid" aria-label="Cards das hortas">
+      <!-- Dynamically rendered by JS -->
+    </div>
+
+    <!-- Empty state when search has no results -->
+    <div class="hortas-empty" id="hortasEmpty" hidden>
+      <i data-lucide="search-x" aria-hidden="true"></i>
+      <h3>Nenhuma horta encontrada</h3>
+      <p>Tente buscar por outro termo, como o nome de um cultivo (ex: "tomate") ou bairro.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <svg class="logo-svg footer-logo" viewBox="0 0 148 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Conecta Hortas">
+            <circle cx="18" cy="22" r="11" fill="var(--sage)"/>
+            <ellipse cx="18" cy="13" rx="5" ry="6" fill="#a5d6a7"/>
+            <line x1="18" y1="13" x2="18" y2="7" stroke="var(--sage)" stroke-width="2" stroke-linecap="round"/>
+            <text x="36" y="25" font-family="Fraunces,serif" font-weight="700" font-size="16" fill="white">Conecta</text>
+            <text x="36" y="38" font-family="Fraunces,serif" font-weight="300" font-size="14" fill="var(--sage)">Hortas</text>
+          </svg>
+          <p>Transformando espaços urbanos em fontes de vida, alimento e comunidade sustentável.</p>
+          <div class="footer-ods">
+            <span>Alinhado ao</span>
+            <strong>ODS 2 – Fome Zero</strong>
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Links de navegação">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="hortas.html">Hortas</a></li>
+            <li><a href="voluntariado.html">Voluntariado</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-links" aria-label="Links do projeto">
+          <h5>Projeto</h5>
+          <ul>
+            <li><a href="https://youtube.com/@vitoralmeida-f9g?si=i5HQCI3WOza-9qX6" target="_blank" rel="noopener">▶ Pitch Vídeo</a></li>
+            <li><a href="sobre.html">ODS 2</a></li>
+            <li><a href="voluntariado.html">Seja Voluntário</a></li>
+            <li><a href="contato.html">Parcerias</a></li>
+            <li><a href="mailto:vitor.almeidadms05@gmail.com">E-mail</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-fiap">
+          <h5>Desenvolvido em</h5>
+          <div class="fiap-badge">
+            <span class="fiap-logo" aria-label="FIAP">FIAP</span>
+            <div>
+              <strong>PBL Agrotech</strong>
+              <span>Fase 4 · 2025</span>
+            </div>
+          </div>
+          <p class="footer-contact-mini">
+            <a href="mailto:vitor.almeidadms05@gmail.com">
+              <i data-lucide="mail" aria-hidden="true"></i>
+              vitor.almeidadms05@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© 2025 Conecta Hortas · FIAP PBL Agrotech</span>
+      <span>Feito com 🌿 por estudantes apaixonados por impacto social</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Voltar ao topo da página">
+  <i data-lucide="arrow-up" aria-hidden="true"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
