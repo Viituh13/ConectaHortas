@@ -1,7 +1,7 @@
-🌱 Conecta Hortas
+# Conecta Hortas
 
 
-Projeto acadêmico da FIAP — PBL Agrotech — Fase 4
+Projeto acadêmico da FIAP - PBL Agrotech - Fase 5
 Alinhado ao ODS 2 da ONU (Fome Zero e Agricultura Sustentável)
 
 
@@ -12,7 +12,7 @@ Plataforma web que conecta comunidades, hortas urbanas e tecnologia para combate
 🎬 Pitch vídeo: https://youtube.com/@vitoralmeida-f9g
 
 
-📖 Sobre o projeto
+## Descrição
 
 O Conecta Hortas é um protótipo funcional que mapeia hortas comunitárias, conecta voluntários a atividades de agricultura urbana e centraliza o contato entre a comunidade e os organizadores das hortas — tudo isso sem a necessidade de um servidor backend.
 
@@ -21,7 +21,15 @@ O projeto foi desenvolvido para a disciplina de Projetos: Agrotech da FIAP, evol
 FaseEntregaFase 3Protótipo visual e identidade de marcaFase 4Site funcional, validações reais, busca de hortas, deploy
 
 
-✨ Funcionalidades
+## Tecnologias
+
+- React
+- JavaScript
+- HTML
+- CSS
+- Vite
+
+## Funcionalidades
 
 
 🗺️ Mapa interativo (Leaflet + OpenStreetMap) com pins customizados por status da horta (vagas abertas, lotada, nova)
@@ -44,7 +52,11 @@ Mensagens de erro em linguagem clara (ex: "Digite seu nome completo (nome e sobr
 
 
 
-🗂️ Estrutura do projeto
+## Nova funcionalidade da Fase 5
+
+O sistema de favoritos permite salvar e remover hortas com um clique. A lista e a quantidade ficam persistidas no `localStorage`, inclusive após atualizar a página, sem backend.
+
+## Estrutura do projeto
 
 conecta-hortas/
 ├── index.html          → Página inicial (hero + painel de impacto)
@@ -59,12 +71,43 @@ conecta-hortas/
     └── identidade-visual-mockups.jpg
 
 
-O site é multi-página estático (sem backend). Navbar e footer são replicados em cada arquivo .html, e o link ativo da navegação é controlado pelo atributo data-page no <body> de cada página.
+O projeto agora é uma SPA React com componentes reutilizáveis, páginas roteadas no cliente e CSS da identidade visual da Fase 4.
+
+```text
+src/
+├── assets/       imagens do projeto
+├── components/   layout e cards reutilizáveis
+├── data/         dados das hortas
+├── pages/        telas da aplicação
+├── styles/       estilos compartilhados
+├── utils/        validações
+├── App.jsx
+└── main.jsx
+legacy/           HTML da Fase 4 arquivado para referência
+tests/            testes automatizados
+```
 
 
 
 
-🛠️ Tecnologias utilizadas
+## Execução
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Deploy
+
+No Vercel, importe o repositório, mantenha o comando de build `npm run build` e o diretório de saída `dist`. O arquivo `vercel.json` já configura o fallback das rotas React.
+
+## Tecnologias utilizadas
 
 CamadaTecnologiaEstruturaHTML5 semânticoEstiloCSS3 (variáveis, grid, flexbox, animações)InteratividadeJavaScript puro (vanilla, sem frameworks)MapaLeaflet.js + tiles do OpenStreetMapÍconesLucide IconsTipografiaGoogle Fonts — Fraunces (display) + DM Sans (corpo)Envio de e-mailEmailJS (com fallback mailto:)DeployGitHub Pages
 

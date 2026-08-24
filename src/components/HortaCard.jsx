@@ -1,0 +1,6 @@
+import { Heart, MapPin, Users } from 'lucide-react';
+import { STATUS_META } from '../data/hortas';
+
+export function HortaCard({ horta, favorite, onToggle }) {
+  return <article className="horta-card visible"><div className="horta-thumb" style={{ background: horta.thumbBg }}><span className="horta-emoji" role="img" aria-label={horta.name}>{horta.emoji}</span><span className={`horta-badge ${horta.status === 'full' ? 'badge-full' : ''}`}>{STATUS_META[horta.status]}</span></div><div className="horta-body"><div className="horta-card-heading"><h3>{horta.name}</h3><button className={`favorite-button ${favorite ? 'is-favorite' : ''}`} onClick={() => onToggle(horta.id)} aria-pressed={favorite} aria-label={favorite ? `Remover ${horta.name} dos favoritos` : `Favoritar ${horta.name}`}><Heart size={17} fill={favorite ? 'currentColor' : 'none'} /> <span>{favorite ? 'Favoritado' : 'Favoritar'}</span></button></div><p className="horta-loc"><MapPin size={15} /> {horta.neighborhood}, São Paulo</p><div className="horta-tags">{horta.crops.map((crop) => <span key={crop}>{crop}</span>)}</div><p className="horta-desc">{horta.desc}</p><div className="horta-card-footer"><span className="horta-volunteers"><Users size={15} /> {horta.volunteers} voluntários</span><span className="horta-area">{horta.area}</span></div></div></article>;
+}
