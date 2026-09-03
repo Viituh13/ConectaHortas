@@ -1,4 +1,4 @@
-export const PITCH_VIDEO_URL = 'COLOCAR_LINK_DO_YOUTUBE_AQUI';
+export const PITCH_VIDEO_URL = 'https://youtu.be/9XHu6eylTM0?feature=shared';
 
 export const HORTAS = [
   { id: 1, name: 'Horta Jardim Ângela', neighborhood: 'Jardim Ângela', lat: -23.6802, lng: -46.7529, status: 'open', emoji: '🌻', thumbBg: '#c8e6c9', crops: ['Tomate', 'Alface', 'Cenoura'], area: '800 m²', volunteers: 28, desc: 'Horta comunitária com foco em hortaliças para distribuição gratuita a famílias em vulnerabilidade alimentar.' },

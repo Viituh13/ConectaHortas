@@ -201,3 +201,5 @@ Fase 4 · 2025
 
 
 📄 Licença
+
+- Projeto acadêmico desenvolvido para fins educacionais no contexto do PBL da FIAP. Uso livre para fins de estudo.
